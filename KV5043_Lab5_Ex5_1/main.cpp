@@ -36,9 +36,17 @@ int main(int argc, char* argv[])
 			recXPos = stof(tokens[1]);		
 			recYPos = stof(tokens[2]);		
 			recWidth = stof(tokens[3]);		
-			recHeight = stof(tokens[4]);	
+			recHeight = stof(tokens[4]);
+			Uint8 red = static_cast<Uint8>(stoi(tokens[5]));
+			Uint8 green = static_cast<Uint8>(stoi(tokens[6]));
+			Uint8 blue = static_cast<Uint8>(stoi(tokens[7]));
+			Uint8 alpha = static_cast<Uint8>(stoi(tokens[8]));
+			Colour itemColour = { red,green,blue,alpha };
+			float xVelocity = stof(tokens[9]);
+			float yVelocity = stof(tokens[10]);
+			Vec2D recVelocity = { xVelocity, yVelocity };
 			
-			Rectangle rec = { recXPos, recYPos, recWidth, recHeight };
+			Rectangle rec = { recXPos, recYPos, recWidth, recHeight, itemColour, recVelocity };
 			
 			window.addRectangle(rec);
 			tokens.clear();

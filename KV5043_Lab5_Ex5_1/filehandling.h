@@ -5,7 +5,7 @@
 
 namespace fileParameters
 {
-	const std::string FILE_NAME = "windowParameters.txt";
+	const std::string FILE_NAME = "windowParametersExtended.txt";
 	const char DELIMITER = ',';
 }
 
