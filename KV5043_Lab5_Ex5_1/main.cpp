@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <vector>
 #include "window.h"
 #include "filehandling.h"
 
@@ -14,17 +16,18 @@ int main(int argc, char* argv[])
 
 	std::string line;
 	
-	std::string tokens[6];
+	std::vector<std::string> tokens;
 
 	std::getline(sStream, line);
 
-	splitString(line, fileParameters::DELIMITER, tokens, 6);
-
+	splitString(line, fileParameters::DELIMITER, tokens);
+	
 	Window window = Window(tokens[1], stoi(tokens[2]), stoi(tokens[3]), stoi(tokens[4]), stoi(tokens[5]));
+	tokens.clear();
 
 	while (std::getline(sStream, line))
 	{
-		splitString(line, fileParameters::DELIMITER, tokens, 5);
+		splitString(line, fileParameters::DELIMITER, tokens);
 		
 		float recXPos, recYPos, recWidth, recHeight;
 
@@ -36,8 +39,9 @@ int main(int argc, char* argv[])
 			recHeight = stof(tokens[4]);	
 			
 			Rectangle rec = { recXPos, recYPos, recWidth, recHeight };
-
+			
 			window.addRectangle(rec);
+			tokens.clear();
 		}
 	}
 
